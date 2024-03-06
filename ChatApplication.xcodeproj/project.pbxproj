@@ -18,7 +18,16 @@
 		EA26BE182B93238A00A7FD01 /* ConversationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26BE172B93238A00A7FD01 /* ConversationRepository.swift */; };
 		EA26BE1B2B9323B300A7FD01 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26BE1A2B9323B300A7FD01 /* User.swift */; };
 		EA26BE1D2B9323DE00A7FD01 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26BE1C2B9323DE00A7FD01 /* Conversation.swift */; };
+		EA293D132B958E9B00BC3A23 /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA293D122B958E9B00BC3A23 /* ConversationListView.swift */; };
+		EA293D152B958EA400BC3A23 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA293D142B958EA400BC3A23 /* ConversationListViewModel.swift */; };
 		EA5292262B95899500DC0822 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5292252B95899500DC0822 /* Error.swift */; };
+		EA66B04F2B96AD9500C23F46 /* ShowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B04E2B96AD9500C23F46 /* ShowError.swift */; };
+		EA66B0512B96ADE800C23F46 /* ConversationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B0502B96ADE800C23F46 /* ConversationItem.swift */; };
+		EA66B0532B96B57100C23F46 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B0522B96B57100C23F46 /* Date+Helper.swift */; };
+		EA66B0552B96B5C200C23F46 /* MessageDateDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B0542B96B5C200C23F46 /* MessageDateDisplay.swift */; };
+		EA66B0592B96B9FE00C23F46 /* ConversationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B0582B96B9FE00C23F46 /* ConversationItemView.swift */; };
+		EA66B05B2B96CD5F00C23F46 /* ConversationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B05A2B96CD5F00C23F46 /* ConversationDetailView.swift */; };
+		EA66B05D2B96CDCF00C23F46 /* ConversationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66B05C2B96CDCF00C23F46 /* ConversationDetailViewModel.swift */; };
 		EA684AA52B9559DE00118726 /* Mesasge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA684AA42B9559DE00118726 /* Mesasge.swift */; };
 		EA684AA72B955B7E00118726 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA684AA62B955B7E00118726 /* MessageRepository.swift */; };
 		EA684AAA2B95602C00118726 /* AuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA684AA92B95602C00118726 /* AuthenticationUseCase.swift */; };
@@ -64,7 +73,16 @@
 		EA26BE172B93238A00A7FD01 /* ConversationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRepository.swift; sourceTree = "<group>"; };
 		EA26BE1A2B9323B300A7FD01 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA26BE1C2B9323DE00A7FD01 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		EA293D122B958E9B00BC3A23 /* ConversationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
+		EA293D142B958EA400BC3A23 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA5292252B95899500DC0822 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		EA66B04E2B96AD9500C23F46 /* ShowError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowError.swift; sourceTree = "<group>"; };
+		EA66B0502B96ADE800C23F46 /* ConversationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationItem.swift; sourceTree = "<group>"; };
+		EA66B0522B96B57100C23F46 /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
+		EA66B0542B96B5C200C23F46 /* MessageDateDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDateDisplay.swift; sourceTree = "<group>"; };
+		EA66B0582B96B9FE00C23F46 /* ConversationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationItemView.swift; sourceTree = "<group>"; };
+		EA66B05A2B96CD5F00C23F46 /* ConversationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDetailView.swift; sourceTree = "<group>"; };
+		EA66B05C2B96CDCF00C23F46 /* ConversationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDetailViewModel.swift; sourceTree = "<group>"; };
 		EA684AA42B9559DE00118726 /* Mesasge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesasge.swift; sourceTree = "<group>"; };
 		EA684AA62B955B7E00118726 /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
 		EA684AA92B95602C00118726 /* AuthenticationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCase.swift; sourceTree = "<group>"; };
@@ -126,6 +144,7 @@
 		EA26BDE82B9322DB00A7FD01 /* ChatApplication */ = {
 			isa = PBXGroup;
 			children = (
+				EA66B04D2B96AD8100C23F46 /* Core */,
 				EA684AB82B9567E900118726 /* Presentation */,
 				EA684AB72B9567D900118726 /* App */,
 				EA26BE132B93233500A7FD01 /* Domain */,
@@ -192,6 +211,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		EA66B04D2B96AD8100C23F46 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EA66B04E2B96AD9500C23F46 /* ShowError.swift */,
+				EA66B0522B96B57100C23F46 /* Date+Helper.swift */,
+				EA66B0542B96B5C200C23F46 /* MessageDateDisplay.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		EA684AA82B95600D00118726 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +265,10 @@
 		EA684ABA2B95680C00118726 /* ConversationList */ = {
 			isa = PBXGroup;
 			children = (
+				EA293D122B958E9B00BC3A23 /* ConversationListView.swift */,
+				EA293D142B958EA400BC3A23 /* ConversationListViewModel.swift */,
+				EA66B0502B96ADE800C23F46 /* ConversationItem.swift */,
+				EA66B0582B96B9FE00C23F46 /* ConversationItemView.swift */,
 			);
 			path = ConversationList;
 			sourceTree = "<group>";
@@ -243,6 +276,8 @@
 		EA684ABB2B95681600118726 /* ConversationDetail */ = {
 			isa = PBXGroup;
 			children = (
+				EA66B05A2B96CD5F00C23F46 /* ConversationDetailView.swift */,
+				EA66B05C2B96CDCF00C23F46 /* ConversationDetailViewModel.swift */,
 			);
 			path = ConversationDetail;
 			sourceTree = "<group>";
@@ -378,14 +413,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA684AB02B9562E000118726 /* JoinConversationUseCase.swift in Sources */,
+				EA66B0512B96ADE800C23F46 /* ConversationItem.swift in Sources */,
+				EA66B04F2B96AD9500C23F46 /* ShowError.swift in Sources */,
 				EA26BE1D2B9323DE00A7FD01 /* Conversation.swift in Sources */,
 				EA684AAE2B95626400118726 /* GetConversationsUserCase.swift in Sources */,
+				EA66B0532B96B57100C23F46 /* Date+Helper.swift in Sources */,
 				EA684AB22B95634E00118726 /* SendMessageUseCase.swift in Sources */,
+				EA66B05B2B96CD5F00C23F46 /* ConversationDetailView.swift in Sources */,
+				EA66B0552B96B5C200C23F46 /* MessageDateDisplay.swift in Sources */,
 				EA684ABD2B95685700118726 /* LoginViewModel.swift in Sources */,
+				EA293D152B958EA400BC3A23 /* ConversationListViewModel.swift in Sources */,
+				EA66B05D2B96CDCF00C23F46 /* ConversationDetailViewModel.swift in Sources */,
 				EA26BE162B93235E00A7FD01 /* AuthenticationRepository.swift in Sources */,
+				EA66B0592B96B9FE00C23F46 /* ConversationItemView.swift in Sources */,
 				EA26BDEC2B9322DB00A7FD01 /* ContentView.swift in Sources */,
 				EA684AB42B9564AB00118726 /* ListenMessageUseCase.swift in Sources */,
 				EA684AAA2B95602C00118726 /* AuthenticationUseCase.swift in Sources */,
+				EA293D132B958E9B00BC3A23 /* ConversationListView.swift in Sources */,
 				EA26BE182B93238A00A7FD01 /* ConversationRepository.swift in Sources */,
 				EA684AC12B95689100118726 /* LoginView.swift in Sources */,
 				EA684AB62B9565C500118726 /* GetMessagesUseCase.swift in Sources */,

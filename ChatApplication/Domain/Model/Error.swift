@@ -10,3 +10,7 @@ import Foundation
 enum LoginError: Error {
     case cannotLogin
 }
+
+enum ConversationError: Error {
+    case getConversationsError
+}

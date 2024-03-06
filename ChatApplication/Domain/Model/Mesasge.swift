@@ -10,7 +10,6 @@ import Foundation
 enum MessageStatus {
     case unsend
     case sent
-    case received
     case seen
 }
 
