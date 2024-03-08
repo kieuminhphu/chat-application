@@ -7,5 +7,5 @@
 
 import Foundation
 protocol AuthenticationRepository {
-    func login(userName: String, password: String) async throws -> User
+    func login(username: String) async throws -> User
 }

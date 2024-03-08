@@ -20,22 +20,20 @@ struct PreviewJoinConversationUseCase: JoinConversationUseCase {
 }
 
 struct PreviewListenMessageUseCase: ListenMessageUseCase {
-    func execute(conversationId: String, onReceived: (Message) -> Void) {
-        
+    func execute(conversationId: String, onReceived: @escaping ([Message]) -> Void) {
+     
     }
 }
 
 struct LoginView: View {
     @State var viewModel: ViewModel
     
-    @State private var userName: String = ""
-    @State private var password: String = ""
+    @State private var username: String = ""
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 28) {
-                textFieldView(title: "Username", text: $userName)
-                secureFieldView(title: "Password", text: $password)
+                textFieldView(title: "Usename", text: $username)
                 loginButton
                 Spacer()
             }
@@ -44,7 +42,7 @@ struct LoginView: View {
             })
             .padding()
             .background(.secondary.opacity(0.1))
-            .navigationBarTitle("Enter to chat", displayMode: .inline)
+            .navigationBarTitle("Login", displayMode: .inline)
             .navigationDestination(isPresented: $viewModel.willMoveToDetailScreen) {
                 // move to conversation list
                 return ConversationListView(viewModel: ConversationListView.ViewModel(getConversationUseCase: PreviewGetConversationsUseCase(),
@@ -71,27 +69,10 @@ struct LoginView: View {
         }
     }
     
-    private func secureFieldView(title: String, text: Binding<String>) -> some View {
-        return VStack(alignment: .leading, spacing: 11) {
-            Text(title)
-                .font(.system(size: 13, weight: .light))
-                .foregroundColor(.secondary)
-                .frame(height: 15, alignment: .leading)
-            
-            SecureField("", text: text)
-                .font(.system(size: 17, weight: .thin))
-                .foregroundColor(.primary)
-                .frame(height: 44)
-                .padding(.horizontal, 12)
-                .background(Color.white)
-                .cornerRadius(4.0)
-        }
-    }
-    
     var loginButton: some View {
         Button(action: {
             Task {
-                await viewModel.login(userName: userName, password: password)
+                await viewModel.login(userName: username)
             }
         }, label: {
             Text("Login")
@@ -99,8 +80,8 @@ struct LoginView: View {
                 .font(.system(size: 18))
                 .frame(width: 215, height: 44, alignment: .center)
         })
-        .background((userName.isEmpty && password.isEmpty) ? .secondary : .primary)
-        .disabled((userName.isEmpty && password.isEmpty))
+        .background((username.isEmpty) ? .secondary : .primary)
+        .disabled((username.isEmpty))
         .cornerRadius(4)
         .padding(.top, 36)
     }
@@ -108,10 +89,10 @@ struct LoginView: View {
 
 #Preview {
     
-    struct PreviewAuthenticationUseCase: AuthenticationUseCase {
-        func execute(userName: String, password: String) async -> Result<User, Error> {
+    struct PreviewLoginUseCase: LoginUseCase {
+        func execute(userName: String) async -> Result<User, Error> {
             return .success(User.sampleData)
         }
     }
-    return LoginView(viewModel: LoginView.ViewModel(authenticationUseCase: PreviewAuthenticationUseCase()))
+    return LoginView(viewModel: LoginView.ViewModel(loginUseCase: PreviewLoginUseCase()))
 }

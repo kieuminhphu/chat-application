@@ -11,19 +11,19 @@ extension LoginView {
     
     @Observable
     final class ViewModel {
-        let authenticationUseCase: AuthenticationUseCase
+        private let loginUseCase: LoginUseCase
         
         var willMoveToDetailScreen: Bool = false
         var showError = ShowError()
         
         private var user: User?
         
-        init(authenticationUseCase: AuthenticationUseCase) {
-            self.authenticationUseCase = authenticationUseCase
+        init(loginUseCase: LoginUseCase) {
+            self.loginUseCase = loginUseCase
         }
         
-        func login(userName: String, password: String) async {
-            let result = await authenticationUseCase.execute(userName: userName, password: password)
+        func login(userName: String) async {
+            let result = await loginUseCase.execute(userName: userName)
             switch result {
             case .success(let user):
                 handleLoginSuccess(user: user)

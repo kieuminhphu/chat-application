@@ -11,6 +11,10 @@ enum LoginError: Error {
     case cannotLogin
 }
 
+enum SignUpError: Error {
+    case cannotSignUp
+}
+
 enum ConversationError: Error {
     case getConversationsError
 }

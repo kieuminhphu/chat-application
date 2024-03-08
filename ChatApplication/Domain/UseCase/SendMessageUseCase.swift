@@ -17,8 +17,7 @@ struct DefaultSendMessageUseCase: SendMessageUseCase {
     
     func execute(conversationId: String, message: Message) async -> Result<Message, Error> {
         do {
-            var message = try await repository.sendMessage(conversationId: conversationId, message: message)
-            message.status = MessageStatus.sent
+            try await repository.sendMessage(conversationId: conversationId, message: message)
             return .success(message)
         } catch {
             return .failure(error)

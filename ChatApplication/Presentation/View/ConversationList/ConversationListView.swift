@@ -39,9 +39,10 @@ struct ConversationListView: View {
     }
     
     struct PreviewListenMessageUseCase: ListenMessageUseCase {
-        func execute(conversationId: String, onReceived: (Message) -> Void) {
+        func execute(conversationId: String, onReceived: @escaping ([Message]) -> Void) {
             
         }
+       
     }
     
     return ConversationListView(viewModel: ConversationListView.ViewModel(getConversationUseCase: PreviewGetConversationsUseCase(),

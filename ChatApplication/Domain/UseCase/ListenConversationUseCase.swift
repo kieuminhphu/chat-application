@@ -1,17 +1,17 @@
 //
-//  GetConversationsUserCase.swift
+//  ListenConversationUseCase.swift
 //  ChatApplication
 //
-//  Created by Kieu Phu on 04/03/2024.
+//  Created by Kieu Phu on 08/03/2024.
 //
 
 import Foundation
 
-protocol GetConversationsUserCase {
+protocol ListenConversationsUserCase {
     func execute() async -> Result<[Conversation], Error>
 }
 
-struct DefaultGetConversationsUserCase: GetConversationsUserCase {
+struct DefaultListenConversationsUserCase: ListenConversationsUserCase {
     
     let conversationRepository: ConversationRepository
     let messageRepository: MessageRepository

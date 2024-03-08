@@ -16,7 +16,6 @@ enum MessageStatus {
 protocol Message {
     var id: String { get set }
     var senderId: String { get set }
-    var receiveId: String { get set }
     var status: MessageStatus { get set }
     var createdDate: Date { get set }
 }
@@ -24,7 +23,6 @@ protocol Message {
 struct TextMessage: Message {
     var id: String
     var senderId: String
-    var receiveId: String
     var status: MessageStatus
     var createdDate: Date
     var text: String
@@ -33,7 +31,6 @@ struct TextMessage: Message {
 struct ImageMessage: Message {
     var id: String
     var senderId: String
-    var receiveId: String
     var status: MessageStatus
     var createdDate: Date
     var data: Data

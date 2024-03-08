@@ -8,14 +8,18 @@
 import Foundation
 
 protocol ListenMessageUseCase {
-    func execute(conversationId: String, onReceived: (Message) -> Void)
+    func execute(conversationId: String, onReceived: @escaping ([Message]) -> Void)
 }
 
 struct DefaultListenMessageUseCase: ListenMessageUseCase {
     
     let repository: MessageRepository
     
-    func execute(conversationId: String, onReceived: ((Message) -> Void)) {
-        repository.listenMessage(conversationId: conversationId, onReceived: onReceived)
+    func execute(conversationId: String, onReceived: @escaping (([Message]) -> Void)) {
+        do {
+            try repository.listenMessage(conversationId: conversationId, onReceived: onReceived)
+        } catch {
+            
+        }
     }
 }
