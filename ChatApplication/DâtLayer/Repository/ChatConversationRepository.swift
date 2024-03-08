@@ -16,14 +16,10 @@ struct ChatConversationRepository: ConversationRepository {
         return conversations.map({ ChatDomainConversationMapper.convertFrom(csConversation: $0) })
     }
     
-    func listenConversation(onReceived: @escaping (Conversation) -> Void) throws {
-        try chatService.listenConversations { conversation in
-            onReceived(ChatDomainConversationMapper.convertFrom(csConversation: conversation))
+    func listenConversation(onReceived: @escaping ([Conversation]) -> Void) throws {
+        try chatService.listenConversations { conversations in
+            onReceived(conversations.map({ ChatDomainConversationMapper.convertFrom(csConversation: $0) }))
         }
-    }
-    
-    func joinConversation(conversationId: String) async throws {
-        
     }
     
 }

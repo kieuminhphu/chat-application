@@ -11,22 +11,25 @@ import Firebase
 protocol ChatServiceProtocol {
     func login(username: String) async throws -> CSUser
     func getConversations() async throws -> [CSConversation]
-    func listenConversations(onReceived: @escaping (CSConversation) -> Void) throws
+    func listenConversations(onReceived: @escaping ([CSConversation]) -> Void) throws
     func sendMessage(conversationId: String, message: CSMessage) async throws
     func listenMessage(conversationId: String, onReceived: @escaping ([CSMessage]) -> Void) throws
     func getMessages(conversationId: String) async throws -> [CSMessage]
 }
 
-struct ChatService: ChatServiceProtocol {
+final class ChatService: ChatServiceProtocol {
     
     static let shared: ChatService = ChatService()
     
     let db = Firestore.firestore()
     private var currentUser: CSUser?
+    //    private var conversationListeners: [ListenerRegistration] = []
     
     func login(username: String) async throws -> CSUser {
         try await db.collection("Users").document(username).setData([:])
-        return CSUser(id: username, name: username)
+        let user = CSUser(id: username, name: username)
+        self.currentUser = user
+        return user
     }
     
     func getConversations() async throws -> [CSConversation] {
@@ -40,20 +43,21 @@ struct ChatService: ChatServiceProtocol {
         return conversations
     }
     
-    func listenConversations(onReceived: @escaping (CSConversation) -> Void) throws {
-        guard let currentUser = self.currentUser else {
+    func listenConversations(onReceived: @escaping ([CSConversation]) -> Void) throws {
+        guard let _ = self.currentUser else {
             throw CSError.mustLoginToUse
         }
-        db.collection("Users").document(currentUser.id).addSnapshotListener { snapshot, error in
-            if let data = snapshot?.data() {
-                do {
-                    let user = try CSUser(data)
-                    let conversation = CSConversation(id: user.id,
-                                                      name: user.name)
-                    onReceived(conversation)
-                } catch {
-                    
+        db.collection("Users").addSnapshotListener { snapshot, error in
+            if let documentChanges = snapshot?.documentChanges {
+                var conversations: [CSConversation] = []
+                for document in documentChanges {
+                    if document.type == .added {
+                        let conversation = CSConversation(id: document.document.documentID,
+                                                          name: document.document.documentID)
+                        conversations.append(conversation)
+                    }
                 }
+                onReceived(conversations)
             }
         }
     }
@@ -75,12 +79,12 @@ struct ChatService: ChatServiceProtocol {
             throw CSError.mustLoginToUse
         }
         db.collection("Collections").document(currentUser.id).collection(conversationId)
-            .addSnapshotListener { snapshot, error in
+            .addSnapshotListener { [weak self] snapshot, error in
                 if let documentChanges = snapshot?.documentChanges {
                     var messages: [CSMessage] = []
                     for document in documentChanges {
                         let data = document.document.data()
-                        if let message = convert(data: data) {
+                        if let message = self?.convert(data: data) {
                             messages.append(message)
                         }
                     }
@@ -94,11 +98,14 @@ struct ChatService: ChatServiceProtocol {
             throw CSError.mustLoginToUse
         }
         
-        let documents = try await db.collection("Collections").document(currentUser.id).collection(conversationId).getDocuments()
+        let documents = try await db.collection("Collections")
+            .document(currentUser.id)
+            .collection(conversationId)
+            .order(by: "createdDate")
+            .getDocuments()
         var messages: [CSMessage] = []
         for document in documents.documents {
             let data = document.data()
-            let message = convert(data: data)
             if let message = convert(data: data) {
                 messages.append(message)
             }

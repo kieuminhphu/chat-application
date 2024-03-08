@@ -13,12 +13,6 @@ struct PreviewGetConversationsUseCase: GetConversationsUserCase {
     }
 }
 
-struct PreviewJoinConversationUseCase: JoinConversationUseCase {
-    func execute(conversationId: String) async -> Result<String, Error> {
-        return .success(conversationId)
-    }
-}
-
 struct PreviewListenMessageUseCase: ListenMessageUseCase {
     func execute(conversationId: String, onReceived: @escaping ([Message]) -> Void) {
      
@@ -45,9 +39,10 @@ struct LoginView: View {
             .navigationBarTitle("Login", displayMode: .inline)
             .navigationDestination(isPresented: $viewModel.willMoveToDetailScreen) {
                 // move to conversation list
-                return ConversationListView(viewModel: ConversationListView.ViewModel(getConversationUseCase: PreviewGetConversationsUseCase(),
-                                                                                      joinConversationUseCase: PreviewJoinConversationUseCase(),
-                                                                                      listenMessageUseCase: PreviewListenMessageUseCase()))
+                ConversationListView(viewModel: ConversationListView.ViewModel(getConversationUseCase: DefaultGetConversationsUserCase(conversationRepository: ChatConversationRepository(chatService: ChatService.shared),
+                                                                                                                                       messageRepository: ChatMessageRepository(chatService: ChatService.shared)),
+                                                                               listConversationUseCase: DefaultListenConversationsUseCase(conversationRepository: ChatConversationRepository(chatService: ChatService.shared),
+                                                                                                                                                 messageRepository: ChatMessageRepository(chatService: ChatService.shared))))
             }
         }
     }

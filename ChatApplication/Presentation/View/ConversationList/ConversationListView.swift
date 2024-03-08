@@ -13,7 +13,7 @@ struct ConversationListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.conversationItems, id: \.self) { item in
+                ForEach(Array(viewModel.conversationItems), id: \.self) { item in
                     ConversationItemView(conversationItem: item)
                 }
             }
@@ -21,6 +21,7 @@ struct ConversationListView: View {
         }
         .task {
             await viewModel.getConversationList()
+            viewModel.listenConversations()
         }
     }
 }
@@ -32,20 +33,12 @@ struct ConversationListView: View {
         }
     }
     
-    struct PreviewJoinConversationUseCase: JoinConversationUseCase {
-        func execute(conversationId: String) async -> Result<String, Error> {
-            return .success(conversationId)
+    struct PreviewListenConversationsUseCase: ListenConversationsUseCase {
+        func execute(onReceived: @escaping ([Conversation]) -> Void) -> Result<Void, Error> {
+            return .success(())
         }
-    }
-    
-    struct PreviewListenMessageUseCase: ListenMessageUseCase {
-        func execute(conversationId: String, onReceived: @escaping ([Message]) -> Void) {
-            
-        }
-       
     }
     
     return ConversationListView(viewModel: ConversationListView.ViewModel(getConversationUseCase: PreviewGetConversationsUseCase(),
-                                                                          joinConversationUseCase: PreviewJoinConversationUseCase(),
-                                                                          listenMessageUseCase: PreviewListenMessageUseCase()))
+                                                                          listConversationUseCase: PreviewListenConversationsUseCase()))
 }

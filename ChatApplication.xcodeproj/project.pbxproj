@@ -25,7 +25,6 @@
 		EA293D152B958EA400BC3A23 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA293D142B958EA400BC3A23 /* ConversationListViewModel.swift */; };
 		EA5292262B95899500DC0822 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5292252B95899500DC0822 /* Error.swift */; };
 		EA5D4E532B9AAD9E003510CA /* ListenConversationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D4E522B9AAD9E003510CA /* ListenConversationUseCase.swift */; };
-		EA5D4E552B9AAED6003510CA /* JoinConversationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D4E542B9AAED6003510CA /* JoinConversationUseCase.swift */; };
 		EA5D4E582B9AB044003510CA /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D4E572B9AB044003510CA /* ChatService.swift */; };
 		EA5D4E5B2B9AB14B003510CA /* CSUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D4E5A2B9AB14B003510CA /* CSUser.swift */; };
 		EA5D4E5D2B9AC5BA003510CA /* CSConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D4E5C2B9AC5BA003510CA /* CSConversation.swift */; };
@@ -90,7 +89,6 @@
 		EA293D142B958EA400BC3A23 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA5292252B95899500DC0822 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA5D4E522B9AAD9E003510CA /* ListenConversationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenConversationUseCase.swift; sourceTree = "<group>"; };
-		EA5D4E542B9AAED6003510CA /* JoinConversationUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinConversationUseCase.swift; sourceTree = "<group>"; };
 		EA5D4E572B9AB044003510CA /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		EA5D4E5A2B9AB14B003510CA /* CSUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSUser.swift; sourceTree = "<group>"; };
 		EA5D4E5C2B9AC5BA003510CA /* CSConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSConversation.swift; sourceTree = "<group>"; };
@@ -317,7 +315,6 @@
 		EA684AA82B95600D00118726 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				EA5D4E542B9AAED6003510CA /* JoinConversationUseCase.swift */,
 				EA684AA92B95602C00118726 /* LoginUseCase.swift */,
 				EA684AAD2B95626400118726 /* GetConversationsUserCase.swift */,
 				EA5D4E522B9AAD9E003510CA /* ListenConversationUseCase.swift */,
@@ -511,7 +508,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5D4E552B9AAED6003510CA /* JoinConversationUseCase.swift in Sources */,
 				EA66B0512B96ADE800C23F46 /* ConversationItem.swift in Sources */,
 				EA66B04F2B96AD9500C23F46 /* ShowError.swift in Sources */,
 				EA5D4E5F2B9AC6AE003510CA /* CSMessage.swift in Sources */,

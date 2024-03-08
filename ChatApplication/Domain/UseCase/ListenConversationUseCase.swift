@@ -7,27 +7,35 @@
 
 import Foundation
 
-protocol ListenConversationsUserCase {
-    func execute() async -> Result<[Conversation], Error>
+protocol ListenConversationsUseCase {
+    func execute(onReceived: @escaping ([Conversation]) -> Void) -> Result<Void, Error>
 }
 
-struct DefaultListenConversationsUserCase: ListenConversationsUserCase {
+struct DefaultListenConversationsUseCase: ListenConversationsUseCase {
     
     let conversationRepository: ConversationRepository
     let messageRepository: MessageRepository
     
-    func execute() async -> Result<[Conversation], Error> {
+    func execute(onReceived: @escaping ([Conversation]) -> Void) -> Result<Void, Error>{
         do {
-            let conversations = try await conversationRepository.getConversations()
-            var newConversations: [Conversation] = []
-            for conversation in conversations {
-                let lastMessage = try await messageRepository.getLastMessage(conversationId: conversation.id)
-                let newConversation = Conversation(id: conversation.id, name: conversation.name, lastMessage: lastMessage)
-                newConversations.append(newConversation)
+            try conversationRepository.listenConversation { conversations in
+                Task {
+                    try await self.handleConversationReceived(conversations: conversations, onReceived: onReceived)
+                }
             }
-            return .success(newConversations)
+            return .success(())
         } catch {
             return .failure(error)
         }
+    }
+    
+    private func handleConversationReceived(conversations: [Conversation], onReceived: @escaping ([Conversation]) -> Void) async throws {
+        var newConversations: [Conversation] = []
+        for conversation in conversations {
+            let lastMessage = try await messageRepository.getLastMessage(conversationId: conversation.id)
+            let newConversation = Conversation(id: conversation.id, name: conversation.name, lastMessage: lastMessage)
+            newConversations.append(newConversation)
+        }
+        onReceived(newConversations)
     }
 }
