@@ -1,4 +1,4 @@
 # chat-application
 
 Class diagram
-![ChatApplication (1)](https://github.com/kieuminhphu/chat-application/assets/149050920/5d0a825f-d175-476e-9d24-a834a2c30ade)
+https://drive.google.com/file/d/1oXKea_dBBT1IsxAPYIzbBVWQwHtL9hHD/view?usp=sharing
